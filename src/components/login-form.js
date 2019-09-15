@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, TextInput, ActivityIndicator } from 'react-native';
 import {Button, Input} from 'react-native-elements'
 import InnerSection from './inner-section'
-import firebase from 'firebase'
 import {authInputChange, login} from '../actions'
 import {connect} from 'react-redux'
 
@@ -12,22 +11,7 @@ class LoginForm extends Component {
 
   }
   
-  componentDidMount() {
-    const firebaseConfig = {
-      apiKey: "AIzaSyA5rn9KL-jR8aNB02ksH86y5-8TnsabmJo",
-      authDomain: "authentication-b0012.firebaseapp.com",
-      databaseURL: "https://authentication-b0012.firebaseio.com",
-      projectId: "authentication-b0012",
-      storageBucket: "",
-      messagingSenderId: "112660177360",
-      appId: "1:112660177360:web:560bf99aa7ef6c8594d9d5"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  }
-
   login() {
-    console.log('prima di loggin in')
     const {email, password} = this.props
     this.props.login({email, password})
   }

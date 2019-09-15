@@ -29,8 +29,24 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './src/reducers'
 import ReduxThunk from 'redux-thunk'
+import firebase from 'firebase'
 
-const App = () => {
+export default class App extends React.Component {
+  componentDidMount() {
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5rn9KL-jR8aNB02ksH86y5-8TnsabmJo",
+      authDomain: "authentication-b0012.firebaseapp.com",
+      databaseURL: "https://authentication-b0012.firebaseio.com",
+      projectId: "authentication-b0012",
+      storageBucket: "",
+      messagingSenderId: "112660177360",
+      appId: "1:112660177360:web:560bf99aa7ef6c8594d9d5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  render(){
   const store=createStore(reducers, {}, applyMiddleware(ReduxThunk))
   return (
     <Provider store={store}>
@@ -38,7 +54,7 @@ const App = () => {
         <LoginForm />
       </View>
     </Provider>  
-  );
+  )}
 };
 
 const styles = StyleSheet.create({
@@ -82,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+
