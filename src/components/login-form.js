@@ -4,6 +4,7 @@ import {Button, Input} from 'react-native-elements'
 import InnerSection from './inner-section'
 import {authInputChange, login} from '../actions'
 import {connect} from 'react-redux'
+import IdeaPadForm from './ideapad-form'
 
 class LoginForm extends Component {
   constructor(props) {
@@ -38,7 +39,13 @@ class LoginForm extends Component {
   }
 
   render() {
-    
+    console.log(this.props.user)
+    if(Object.keys(this.props.user).length !== 0) {
+      
+      return (
+        <IdeaPadForm />
+      )
+    }
     return (
       <View>
         <InnerSection>
