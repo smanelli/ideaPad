@@ -32,7 +32,7 @@ import ReduxThunk from 'redux-thunk'
 import firebase from 'firebase'
 import config from './config'
 import './src/fixtimerbug'
-import AppNavigator from './src/navigation'
+import AppContainer from './src/navigation'
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -45,9 +45,9 @@ export default class App extends React.Component {
   const store=createStore(reducers, {}, applyMiddleware(ReduxThunk))
   return (
     <Provider store={store}>
-      <View>
-        <LoginForm/>
-      </View>
+      
+      <AppContainer />
+      
     </Provider>  
   )}
 };

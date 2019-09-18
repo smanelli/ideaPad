@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "firebase": "^6.6.1",
+    "loadash": "^1.0.0",
+    "loadsh": "^0.0.4",
     "node-pre-gyp": "^0.13.0",
     "react": "16.8.6",
     "react-native": "0.60.5",

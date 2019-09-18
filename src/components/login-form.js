@@ -6,14 +6,36 @@ import {authInputChange, login} from '../actions'
 import {connect} from 'react-redux'
 import IdeaPadForm from './ideapad-form'
 import IdeaList from './idea-list'
+import _ from 'loadsh'
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
-
+    
+    this.state = {
+      email: '',
+      password: '',
+      user: {},
+      error: '',
+      loading: false
+      }
   }
-  
-  login() {
+  /*static getDerivedStateFromProps(props, state) {
+    console.log(props.user)
+    if(!_.isEmpty(props.user)) {
+      this.props.navigation.navigate('App')
+    }
+    return null
+  }
+*/
+  /*componentWillReceiveProps(nextProps) {
+    console.log(nextProps.user)
+    if(!_.isEmpty(nextProps.user)) {
+      this.props.navigation.navigate('App')
+    }
+  }
+*/
+  onLogin = async () => {
     const {email, password} = this.props
     this.props.login({email, password})
   }
@@ -27,7 +49,7 @@ class LoginForm extends Component {
       )
     }
     return (
-      <Button title="Login" onPress={this.login.bind(this)} buttonStyle={{ backgroundColor:'#3bd3d4' }} />
+      <Button title="Login" onPress={() => this.onLogin().then(this.props.navigation.navigate('App'))} buttonStyle={{ backgroundColor:'#3bd3d4' }} />
       )
   }
 
